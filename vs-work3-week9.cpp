@@ -1,61 +1,32 @@
 ﻿#include <iostream>
 #include <stdio.h>
-#include <string.h>
+#include <string>
+
 using namespace std;
 
 
 int main() {
-	char sentence[100] = { 0 }, cnumber[100] = { 0 };
-	int len, z = 0, head = 1, inumber[100] = { 0 }, temp = 0, cpnumber[100] = { 0 };
+	string sentence, word;
+	int appear = 0;
 
 	do {
-		cin.getline(sentence, 100);
-	} while (sentence[0] == ' ');
+		getline(cin, word);
+	} while (size(word) > 128);
 
-	len = strlen(sentence);
-
-	for (int i = 0; i < len; i++) {
-		if (sentence[i] == ' ' || sentence[i] == ',' || sentence[i] == '，') head++;
-		int x = 1, y = 0;
-		for (int t = 0; t < i; t++) {
-			if (sentence[i] == sentence[t] || sentence[i] == (sentence[t] - 32) || sentence[i] == (sentence[t] + 32)) y += 1;
-		}
-		if (y == 0 && sentence[i] != ' ' && sentence[i] != ',' && sentence[i] != '.' && sentence[i] != '，' && sentence[i] != '。') {
-			if (sentence[i] < 97) {
-				sentence[i] += 32;
-				cpnumber[temp] = sentence[i];
-			}
-			else cpnumber[temp] = sentence[i];
-
-			for (int j = 0; j < len; j++) {
-				if (sentence[i] == sentence[j] || sentence[i] == (sentence[j] - 32) || sentence[i] == (sentence[j] + 32)) inumber[temp] += 1;
-			}
-			temp++;
-			z++;
-		}
-	}
-
-	for (int i = 0; i < z; i++) {
-		for (int j = 0; j < z - 1; j++) {
-			if (cpnumber[j] > cpnumber[j + 1]) {
-				cpnumber[j] += cpnumber[j + 1];//a=a+b
-				cpnumber[j + 1] = cpnumber[j] - cpnumber[j + 1];//b=a-b
-				cpnumber[j] -= cpnumber[j + 1];//a=a-b
-
-				inumber[j] += inumber[j + 1];
-				inumber[j + 1] = inumber[j] - inumber[j + 1];
-				inumber[j] -= inumber[j + 1];
+	do {
+		getline(cin, sentence);
+	} while (size(sentence) > 512);
+	
+	for (int i = 0; i < size(sentence)- (size(word)-1); i++) {
+		int temp = 0;
+		for (int j = 0; j < size(word); j++) {
+			if (sentence[i+j] == word[j] || sentence[i + j] == (word[j] - 32) || sentence[i + j] == (word[j] + 32)) {
+				temp++;
 			}
 		}
+		if(temp==size(word)) appear++;
 	}
 
-	cout << head << endl;
-	for (int i = 0; i < z; i++) {
-		cnumber[i] = cpnumber[i];
-	}
-
-	for (int i = 0; i < z; i++) {
-		cout << cnumber[i] << ":" << inumber[i] << endl;
-	}
+	cout << appear;
 
 }
