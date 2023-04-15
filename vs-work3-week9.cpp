@@ -6,27 +6,78 @@ using namespace std;
 
 
 int main() {
-	string sentence, word;
-	int appear = 0;
-
-	do {
-		getline(cin, word);
-	} while (size(word) > 128);
-
-	do {
-		getline(cin, sentence);
-	} while (size(sentence) > 512);
-	
-	for (int i = 0; i < size(sentence)- (size(word)-1); i++) {
-		int temp = 0;
-		for (int j = 0; j < size(word); j++) {
-			if (sentence[i+j] == word[j] || sentence[i + j] == (word[j] - 32) || sentence[i + j] == (word[j] + 32)) {
-				temp++;
-			}
+	string sentence,sword;
+	char word[1000]={0};
+	int temp = 0, space = 0, spspace = 0;
+	getline(cin, sentence);
+	for (int i = 0; i < size(sentence); i++) {
+		if (sentence[i] < 91 && sentence[i] >64) sentence[i] += 32;
+		if (sentence[i] == ' ') {
+			space++;
 		}
-		if(temp==size(word)) appear++;
 	}
 
-	cout << appear;
+	for (int i = 0; i < size(sentence); i++) {
+		int x = 0, y = 0;
+
+		if (sentence[i] == ' ') {
+			spspace++;
+
+			for (int t = temp; t < i; t++) {
+				word[x] = sentence[t];
+				//cout << word[x];
+				x++;
+			}
+			sword = word;
+			
+			if (temp != 0) {
+				for (int q = 0; q < temp - (size(sword) - 1); q++) {
+					y = 0;
+					for (int w = 0; w < size(sword); w++) {
+						if (sentence[w+q]  == sword[w]) y++;
+					}
+					if (y == size(sword)) {
+						for (int j = temp; j < i; j++) {
+							temp++;
+						}
+						break;
+					}
+				}
+				if (y == 0) {
+					for (int j = temp; j < i; j++) {
+						cout << sentence[j];
+						temp++;
+					}
+				}
+			}else {
+				for (int j = temp; j < i; j++) {
+					cout << sentence[j];
+					temp++;
+				}
+			}
+			temp++;	
+		}
+
+		if (space == spspace) {
+			//for (int t = temp; t < size(sentence); t++) {
+			//	word[x] = sentence[t];
+			//	cout << word[x];
+			//	x++;
+			// temp++
+			//}
+
+			/*for (int j = temp; j < size(sentence); j++) {
+				cout << sentence[j];
+				temp++;
+			}*/
+
+
+
+		}
+			
+		
+	}
+
+	
 
 }
