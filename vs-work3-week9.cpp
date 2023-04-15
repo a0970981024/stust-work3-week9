@@ -5,7 +5,7 @@ using namespace std;
 
 
 int main() {
-	char sentence[100] = { 0 }, cnumber[100] = { 0 };
+	char sentence[100] = { 0 }, cnumber[100] = { 0 },tt[100]={0};
 	int len, z = 0, head = 1, inumber[100] = { 0 }, temp = 0, cpnumber[100] = { 0 };
 
 	do {
@@ -16,6 +16,8 @@ int main() {
 
 	for (int i = 0; i < len; i++) {
 		if (sentence[i] == ' ' || sentence[i] == ',' || sentence[i] == '，') head++;
+		if ((sentence[i] == ' ' || sentence[i] == ',' || sentence[i] == '，') && (sentence[i + 1] == ' ' || sentence[i + 1] == ',' || sentence[i + 1] == '，')) head--;
+
 		int x = 1, y = 0;
 		for (int t = 0; t < i; t++) {
 			if (sentence[i] == sentence[t] || sentence[i] == (sentence[t] - 32) || sentence[i] == (sentence[t] + 32)) y += 1;
@@ -49,13 +51,16 @@ int main() {
 		}
 	}
 
+
 	cout << head << endl;
 	for (int i = 0; i < z; i++) {
 		cnumber[i] = cpnumber[i];
+		tt[i] = inumber[i] + '0';
 	}
+	
 
 	for (int i = 0; i < z; i++) {
-		cout << cnumber[i] << ":" << inumber[i] << endl;
+		cout << cnumber[i] << " : " << tt[i] << endl;
 	}
 
 }
