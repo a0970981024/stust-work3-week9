@@ -16,7 +16,6 @@ int main() {
 			space++;
 		}
 	}
-
 	for (int i = 0; i < size(sentence); i++) {
 		int x = 0, y = 0;
 
@@ -29,12 +28,12 @@ int main() {
 				x++;
 			}
 			sword = word;
-			
+
 			if (temp != 0) {
 				for (int q = 0; q < temp - (size(sword) - 1); q++) {
 					y = 0;
 					for (int w = 0; w < size(sword); w++) {
-						if (sentence[w+q]  == sword[w]) y++;
+						if (sentence[w + q] == sword[w]) y++;
 					}
 					if (y == size(sword)) {
 						for (int j = temp; j < i; j++) {
@@ -43,40 +42,62 @@ int main() {
 						break;
 					}
 				}
-				if (y == 0) {
+				if (y != size(sword)) {
 					for (int j = temp; j < i; j++) {
 						cout << sentence[j];
 						temp++;
 					}
+					cout << ' ';
 				}
-			}else {
+			}
+			else {
 				for (int j = temp; j < i; j++) {
 					cout << sentence[j];
 					temp++;
 				}
+				cout << ' ';
 			}
-			temp++;	
+			temp++;
 		}
+	}
 
-		if (space == spspace) {
-			//for (int t = temp; t < size(sentence); t++) {
-			//	word[x] = sentence[t];
-			//	cout << word[x];
-			//	x++;
-			// temp++
-			//}
-
-			/*for (int j = temp; j < size(sentence); j++) {
+	if (space == spspace) {
+		int x = 0;
+		if (space != 0) {
+			int y = 0;
+			for (int t = temp; t < size(sentence); t++) {
+				word[x] = sentence[t];
+				x++;
+			}
+			sword = word;
+			for (int q = 0; q < temp - (size(sword) - 1); q++) {
+				 y = 0;
+				for (int w = 0; w < size(sword); w++) {
+					if (sentence[w + q] == sword[w]) y++;
+				}
+				if (y == size(sword)) {
+					for (int j = temp; j < size(sentence); j++) {
+						temp++;
+					}
+					break;
+				}
+			}
+			if (y != size(sword)) {
+				for (int j = temp; j < size(sentence); j++) {
+					cout << sentence[j];
+					temp++;
+				}
+			}
+		}else {
+			for (int j = temp; j < size(sentence); j++) {
 				cout << sentence[j];
 				temp++;
-			}*/
-
-
-
+			}
 		}
+	}
 			
 		
-	}
+	
 
 	
 
