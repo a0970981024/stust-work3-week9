@@ -5,7 +5,7 @@ using namespace std;
 
 
 int main() {
-	char sentence[100] = { 0 }, cnumber[100] = { 0 };
+	char sentence[100] = { 0 }, cnumber[100] = { 0 }, tt[100] = { 0 };
 	int len, z = 0, head = 1, inumber[100] = { 0 }, temp = 0, cpnumber[100] = { 0 };
 
 	do {
