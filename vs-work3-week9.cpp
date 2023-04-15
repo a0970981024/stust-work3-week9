@@ -5,7 +5,7 @@ using namespace std;
 
 
 int main() {
-	char sentence[100] = { 0 }, cnumber[100] = { 0 },tt[100]={0};
+	char sentence[100] = { 0 }, cnumber[100] = { 0 };
 	int len, z = 0, head = 1, inumber[100] = { 0 }, temp = 0, cpnumber[100] = { 0 };
 
 	do {
@@ -55,12 +55,11 @@ int main() {
 	cout << head << endl;
 	for (int i = 0; i < z; i++) {
 		cnumber[i] = cpnumber[i];
-		tt[i] = inumber[i] + '0';
 	}
-	
+
 
 	for (int i = 0; i < z; i++) {
-		cout << cnumber[i] << " : " << tt[i] << endl;
+		cout << cnumber[i] << " : " << inumber[i] << endl;
 	}
 
 }
