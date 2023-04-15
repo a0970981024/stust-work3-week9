@@ -20,13 +20,18 @@ int main() {
 	for (int i = 0; i < size(sentence)- (size(word)-1); i++) {
 		int temp = 0;
 		for (int j = 0; j < size(word); j++) {
-			if (sentence[i+j] == word[j] || sentence[i + j] == (word[j] - 32) || sentence[i + j] == (word[j] + 32)) {
-				temp++;
+			/*if (sentence[i+j] == word[j] || sentence[i + j] == (word[j] - 32) || sentence[i + j] == (word[j] + 32)) {
+				temp++;*/
+			if (sentence[i + j] == word[j] ) {
+				temp++; 
 			}
 		}
 		if(temp==size(word)) appear++;
 	}
 
-	cout << appear;
+	if (appear != 0) {
+		cout << appear;
+	}
+	
 
 }
