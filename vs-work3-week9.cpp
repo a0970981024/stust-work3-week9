@@ -6,27 +6,32 @@ using namespace std;
 
 
 int main() {
-	string sentence, word;
-	int appear = 0;
-
-	do {
-		getline(cin, word);
-	} while (size(word) > 128);
-
+	string sentence;
+	string Demo = "abcdefghijklmnopqrstuvwxyz1234567890-=[]\\;',./ ";
+	string change = "snvfrghjokl;,mp[wtdyibecux234567890-==]\\\\''.// ";
+	int r = 0;
+	
+	//限制為 ASCII 表中，編號 32 至 125 之字元 
 	do {
 		getline(cin, sentence);
-	} while (size(sentence) > 512);
-	
-	for (int i = 0; i < size(sentence)- (size(word)-1); i++) {
-		int temp = 0;
-		for (int j = 0; j < size(word); j++) {
-			if (sentence[i+j] == word[j] || sentence[i + j] == (word[j] - 32) || sentence[i + j] == (word[j] + 32)) {
-				temp++;
+		r = 0;
+		for (int i = 0; i < size(sentence); i++) {
+			if (sentence[i] < 32 || sentence[i]>125) {
+				r++;
 			}
 		}
-		if(temp==size(word)) appear++;
+	} while (r != 0);
+
+	for (int i = 0; i < size(sentence); i++) {
+		for (int j = 0; j < size(Demo); j++) {
+			if (sentence[i] == Demo[j]) {
+				cout << change[j];
+			}
+		}
 	}
 
-	cout << appear;
+	
+
+	
 
 }
