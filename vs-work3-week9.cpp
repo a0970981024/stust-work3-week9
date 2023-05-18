@@ -19,7 +19,11 @@ int main() {
 			if (sentence[i] < 32 || sentence[i]>125) {
 				r++;
 			}
+			if (sentence[i] >= 65 && sentence[i] <= 90) {
+				sentence[i] += 32;
+			}
 		}
+		
 	} while (r != 0);
 
 	for (int i = 0; i < size(sentence); i++) {
