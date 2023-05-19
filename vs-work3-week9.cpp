@@ -2,15 +2,14 @@
 #include <stdio.h>
 #include <iostream>
 using namespace std;
-#include "task.h"
+
 
 int main(){
-	int n, sd[60];
+	int n, sd[30][30];
 	cout << "輸入n:";
 	do {
 		cin >> n;
 	} while (n < 1 || n > 30);
-
 	cout << "輸入sd :";
 
 	for (int i = 0; i < n * 2; i++) {
@@ -20,7 +19,8 @@ int main(){
 	}
 	
 
-	task car(n, sd);
+
+
 
    
 }
