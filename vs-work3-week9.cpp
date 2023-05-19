@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <iostream>
 using namespace std;
+#include "task.h"
 
 int main(){
 	int n, sd[60];
@@ -19,7 +20,7 @@ int main(){
 	}
 	
 
-
+	task car(n, sd);
 
    
 }
